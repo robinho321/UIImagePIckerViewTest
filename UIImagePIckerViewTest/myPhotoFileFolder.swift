@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 import QuartzCore
 
+enum weatherConditions {
+    case nice
+    case cloudy
+    case cold
+    case rain
+    case lightning
+    
+    static let allValues = [nice, cloudy, cold, rain, lightning]
+}
+
 var weatherFolders = ["Nice", "Cloudy", "Cold", "Rain", "Lightning"]
 var myIndex = 0
 
@@ -25,7 +35,7 @@ class myPhotoFileFolder: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherFolders.count
+        return weatherConditions.allValues.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,16 +46,49 @@ class myPhotoFileFolder: UITableViewController {
         return cell
     }
     
+    
+    //share - take the user to the URL that is my app
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
         if let index = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: index, animated: true)
         }
         
-        myIndex = indexPath.row
-        performSegue(withIdentifier: "collectionVC", sender: self)
+        if indexPath.row == 0 {
+            segueToPhotoFolder(.nice)
+        }
+            
+        else if indexPath.row == 1 {
+            segueToPhotoFolder(.cloudy)
+        }
+            
+        else if indexPath.row == 2 {
+            segueToPhotoFolder(.cold)
+        }
+            
+        else if indexPath.row == 3 {
+            segueToPhotoFolder(.rain)
+        }
+            
+        else if indexPath.row == 4 {
+            segueToPhotoFolder(.lightning)
+        }
+        
+//        myIndex = indexPath.row
+//        performSegue(withIdentifier: "collectionVC", sender: self)
         
     }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+//
+//        if let index = self.tableView.indexPathForSelectedRow{
+//            self.tableView.deselectRow(at: index, animated: true)
+//        }
+//
+//        myIndex = indexPath.row
+//        performSegue(withIdentifier: "collectionVC", sender: self)
+//
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         if let index = self.tableView.indexPathForSelectedRow{
@@ -58,4 +101,39 @@ class myPhotoFileFolder: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func segueToPhotoFolder(_ weatherConditions: weatherConditions) {
+        switch weatherConditions {
+        case .nice:
+            return self.performSegue(withIdentifier: "showNice", sender: nil)
+        case .cloudy:
+            return self.performSegue(withIdentifier: "showCloudy", sender: nil)
+        case .cold:
+            return self.performSegue(withIdentifier: "showCold", sender: nil)
+        case .rain:
+            return self.performSegue(withIdentifier: "showRain", sender: nil)
+        case .lightning:
+            return self.performSegue(withIdentifier: "showLightning", sender: nil)
+        }
+    }
 }
+
+//    func nice() {
+//        self.performSegue(withIdentifier: "showTerms", sender: nil)
+//    }
+//
+//    func cloudy() {
+//        self.performSegue(withIdentifier: "showTerms", sender: nil)
+//    }
+//
+//    func cold() {
+//        self.performSegue(withIdentifier: "showTerms", sender: nil)
+//    }
+//
+//    func rain() {
+//        self.performSegue(withIdentifier: "showTerms", sender: nil)
+//    }
+//
+//    func lightning() {
+//        self.performSegue(withIdentifier: "showTerms", sender: nil)
+//    }

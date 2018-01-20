@@ -17,64 +17,59 @@ import CoreData
 
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    fileprivate let itemsPerRow: CGFloat = 3
-    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    var directoryContentsArray = [URL]()
     
-    @IBOutlet weak var collectionView: UICollectionView! { didSet {
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        }
-    }
+    fileprivate let itemsPerRow: CGFloat = 3
+    fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 15.0, bottom: 50.0, right: 15.0)
+    
+    @IBOutlet weak var addMyImageButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchDirectoryContents()
         checkPhotoLibraryPermission()
-        collectionView.reloadData()
+        
+        navigationItem.rightBarButtonItem = editButtonItem
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.collectionView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+//        collectionView.reloadData()
     }
-    
-//    func fetchDirectoryContents() {
-//        let fileManager = FileManager.default
-//        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//        let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
-//        print("directory contents is \(directoryContents)")
-//    }
     
     //number of views
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        let fileManager = FileManager.default
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let dirContents = try? fileManager.contentsOfDirectory(atPath: documentsPath)
-        let count = dirContents?.count
-        return count!
+        print(directoryContentsArray.count)
+        return directoryContentsArray.count
+
             }
     
     //populate the views
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! myCell
-        let fileManager = FileManager.default
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
-        
-        for imageURL in directoryContents where imageURL.pathExtension == "jpeg" {
-            if let image = UIImage(contentsOfFile: imageURL.path) {
-                cell.myImageView.image = image //[indexPath.row] **need "image" to be an array so can assign to indexPath.row
-            } else {
-                fatalError("Can't create image from file \(imageURL)")
+            
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? myCell {
+                let imageFile = self.directoryContentsArray[indexPath.item]
+                if imageFile.pathExtension == "jpeg",
+                    let image = UIImage(contentsOfFile: imageFile.path) {
+                    cell.myImageView.image = image
+                    cell.delegate = self as myCellDelegate
+                }
+                else if
+                    imageFile.pathExtension == "png",
+                    let image = UIImage(contentsOfFile: imageFile.path) {
+                        cell.myImageView.image = image
+                    cell.delegate = self as myCellDelegate
+                }
+                else {
+                    fatalError("Can't create image from file \(imageFile)")
+                }
+                
+                return cell
             }
+            return UICollectionViewCell()
         }
-        return cell
-    }
-    
     
     @IBAction func addMyImage(_ sender: UIButton) {
         
@@ -114,6 +109,7 @@ func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMe
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         do {
             try FileManager.default.moveItem(at: imageURL.standardizedFileURL, to: documentDirectory.appendingPathComponent(imageURL.lastPathComponent))
+            
             collectionView.reloadData()
         } catch {
             print(error)
@@ -128,6 +124,33 @@ func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     picker.dismiss(animated: true, completion: nil)
 }
     
+//Mark - Delete Items
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        addMyImageButton.isEnabled = !editing
+        if let indexPaths = collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                if let cell = collectionView?.cellForItem(at: indexPath) as? myCell {
+                    cell.isEditing = editing
+                }
+            }
+        }
+    }
+    
+    
+func fetchDirectoryContents() {
+    let fileManager = FileManager.default
+    let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+    
+    self.directoryContentsArray = directoryContents
+    print(directoryContentsArray.count)
+    collectionView.reloadData()
+}
+
+
 func checkPhotoLibraryPermission() {
     let status = PHPhotoLibrary.authorizationStatus()
     switch status {
@@ -152,6 +175,24 @@ func checkPhotoLibraryPermission() {
 }
 }
 
+extension CollectionViewController: myCellDelegate
+{
+    func delete(cell: myCell) {
+        if let indexPath = collectionView?.indexPath(for: cell) {
+            //1. delete the photo from our data source
+            let fileManager = FileManager.default
+            let imageFile = self.directoryContentsArray[indexPath.item]
+            let imagePath = imageFile.path
+            try! fileManager.removeItem(atPath: imagePath)
+            
+            directoryContentsArray.remove(at: indexPath.item)
+            
+            //2. delete the photo cell at that index path from the collection view
+            collectionView?.deleteItems(at: [indexPath])
+        }
+    }
+}
+
 //Flow Layout Arrangement for UICollectionView
 extension CollectionViewController : UICollectionViewDelegateFlowLayout {
     //1
@@ -159,7 +200,7 @@ extension CollectionViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         //2
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 0.5)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
@@ -218,3 +259,24 @@ extension CollectionViewController : UICollectionViewDelegateFlowLayout {
 //        let myString = myFileNames[indexPath.row]
 //        let filePath = directory[indexPath.row].thumbnail
 //        cell.postImage.image = UIImage(contentsOfFile:filePath)
+
+
+//    func fetchDirectoryContents(_ type: URL) -> [String] {
+//        let fileManager = FileManager.default
+//        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//        let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
+//        print("directory contents is \(directoryContents)")
+//        return directoryContents as [String]
+//    }
+
+
+//        let fileManager = FileManager.default
+//        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+//        let dirContents = try? fileManager.contentsOfDirectory(atPath: documentsPath)
+//        let count = dirContents?.count
+//        return count!
+
+
+//        let fileManager = FileManager.default
+//        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//        let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
