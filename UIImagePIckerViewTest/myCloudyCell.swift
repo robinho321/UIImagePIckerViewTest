@@ -8,26 +8,26 @@
 
 import UIKit
 
-protocol myCellDelegate: class {
-    func delete(cell: myCell)
+protocol myCloudyCellDelegate: class {
+    func delete(cell: myCloudyCell)
 }
 
-class myCell: UICollectionViewCell {
+class myCloudyCell: UICollectionViewCell {
     
     @IBOutlet weak var deleteButtonBackgroundView: UIVisualEffectView!
-    @IBOutlet weak var myImageView: UIImageView!
+    @IBOutlet weak var myCloudyImageView: UIImageView!
     
-    weak var delegate: myCellDelegate?
+    weak var delegate: myCloudyCellDelegate?
     
     func setThumbnailImage(_ thumbnailImage: UIImage){
-        self.myImageView.image = thumbnailImage
+        self.myCloudyImageView.image = thumbnailImage
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-            deleteButtonBackgroundView.layer.cornerRadius = deleteButtonBackgroundView.bounds.width / 2.0
-            deleteButtonBackgroundView.layer.masksToBounds = true
-            deleteButtonBackgroundView.isHidden = !isEditing
+        deleteButtonBackgroundView.layer.cornerRadius = deleteButtonBackgroundView.bounds.width / 2.0
+        deleteButtonBackgroundView.layer.masksToBounds = true
+        deleteButtonBackgroundView.isHidden = !isEditing
     }
     
     var isEditing: Bool = false {

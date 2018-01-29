@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A900AEB0201597AA00C6BC11 /* ColdCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A900AEAF201597AA00C6BC11 /* ColdCollectionViewController.swift */; };
+		A900AEB2201597C300C6BC11 /* myColdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A900AEB1201597C300C6BC11 /* myColdCell.swift */; };
 		A99EC0331FCA6B9A00108221 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99EC0321FCA6B9900108221 /* CollectionViewController.swift */; };
 		A99EC0351FCA736200108221 /* myCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99EC0341FCA736100108221 /* myCell.swift */; };
+		A9ADBC542012FE940093C5D7 /* CloudyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADBC532012FE940093C5D7 /* CloudyCollectionViewController.swift */; };
+		A9ADBC562012FEE20093C5D7 /* myCloudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADBC552012FEE20093C5D7 /* myCloudyCell.swift */; };
 		A9F0A6E81FC9D0CB006BE7A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0A6E71FC9D0CB006BE7A1 /* AppDelegate.swift */; };
 		A9F0A6EA1FC9D0CB006BE7A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0A6E91FC9D0CB006BE7A1 /* ViewController.swift */; };
 		A9F0A6ED1FC9D0CB006BE7A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9F0A6EB1FC9D0CB006BE7A1 /* Main.storyboard */; };
@@ -18,8 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A900AEAF201597AA00C6BC11 /* ColdCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColdCollectionViewController.swift; sourceTree = "<group>"; };
+		A900AEB1201597C300C6BC11 /* myColdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myColdCell.swift; sourceTree = "<group>"; };
 		A99EC0321FCA6B9900108221 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		A99EC0341FCA736100108221 /* myCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCell.swift; sourceTree = "<group>"; };
+		A9ADBC532012FE940093C5D7 /* CloudyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyCollectionViewController.swift; sourceTree = "<group>"; };
+		A9ADBC552012FEE20093C5D7 /* myCloudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCloudyCell.swift; sourceTree = "<group>"; };
 		A9F0A6E41FC9D0CB006BE7A1 /* UIImagePIckerViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIImagePIckerViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F0A6E71FC9D0CB006BE7A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9F0A6E91FC9D0CB006BE7A1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,8 +71,12 @@
 				A9F0A6E71FC9D0CB006BE7A1 /* AppDelegate.swift */,
 				A9F0A6E91FC9D0CB006BE7A1 /* ViewController.swift */,
 				A99EC0321FCA6B9900108221 /* CollectionViewController.swift */,
+				A9ADBC532012FE940093C5D7 /* CloudyCollectionViewController.swift */,
+				A900AEAF201597AA00C6BC11 /* ColdCollectionViewController.swift */,
 				A9F0A6F91FC9E72C006BE7A1 /* myPhotoFileFolder.swift */,
 				A99EC0341FCA736100108221 /* myCell.swift */,
+				A9ADBC552012FEE20093C5D7 /* myCloudyCell.swift */,
+				A900AEB1201597C300C6BC11 /* myColdCell.swift */,
 				A9F0A6EB1FC9D0CB006BE7A1 /* Main.storyboard */,
 				A9F0A6EE1FC9D0CB006BE7A1 /* Assets.xcassets */,
 				A9F0A6F01FC9D0CB006BE7A1 /* LaunchScreen.storyboard */,
@@ -145,7 +157,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9ADBC542012FE940093C5D7 /* CloudyCollectionViewController.swift in Sources */,
+				A900AEB2201597C300C6BC11 /* myColdCell.swift in Sources */,
 				A99EC0331FCA6B9A00108221 /* CollectionViewController.swift in Sources */,
+				A900AEB0201597AA00C6BC11 /* ColdCollectionViewController.swift in Sources */,
+				A9ADBC562012FEE20093C5D7 /* myCloudyCell.swift in Sources */,
 				A9F0A6FA1FC9E72C006BE7A1 /* myPhotoFileFolder.swift in Sources */,
 				A99EC0351FCA736200108221 /* myCell.swift in Sources */,
 				A9F0A6EA1FC9D0CB006BE7A1 /* ViewController.swift in Sources */,
