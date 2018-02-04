@@ -11,6 +11,10 @@
 		A900AEB2201597C300C6BC11 /* myColdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A900AEB1201597C300C6BC11 /* myColdCell.swift */; };
 		A99EC0331FCA6B9A00108221 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99EC0321FCA6B9900108221 /* CollectionViewController.swift */; };
 		A99EC0351FCA736200108221 /* myCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99EC0341FCA736100108221 /* myCell.swift */; };
+		A9A725B5201EA7E600326622 /* RainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A725B4201EA7E600326622 /* RainCollectionViewController.swift */; };
+		A9A725B7201EA81B00326622 /* LightningCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A725B6201EA81B00326622 /* LightningCollectionViewController.swift */; };
+		A9A725B9201EA90E00326622 /* myRainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A725B8201EA90E00326622 /* myRainCell.swift */; };
+		A9A725BB201EA94000326622 /* myLightningCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A725BA201EA94000326622 /* myLightningCell.swift */; };
 		A9ADBC542012FE940093C5D7 /* CloudyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADBC532012FE940093C5D7 /* CloudyCollectionViewController.swift */; };
 		A9ADBC562012FEE20093C5D7 /* myCloudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADBC552012FEE20093C5D7 /* myCloudyCell.swift */; };
 		A9F0A6E81FC9D0CB006BE7A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0A6E71FC9D0CB006BE7A1 /* AppDelegate.swift */; };
@@ -26,6 +30,10 @@
 		A900AEB1201597C300C6BC11 /* myColdCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myColdCell.swift; sourceTree = "<group>"; };
 		A99EC0321FCA6B9900108221 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		A99EC0341FCA736100108221 /* myCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCell.swift; sourceTree = "<group>"; };
+		A9A725B4201EA7E600326622 /* RainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainCollectionViewController.swift; sourceTree = "<group>"; };
+		A9A725B6201EA81B00326622 /* LightningCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightningCollectionViewController.swift; sourceTree = "<group>"; };
+		A9A725B8201EA90E00326622 /* myRainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRainCell.swift; sourceTree = "<group>"; };
+		A9A725BA201EA94000326622 /* myLightningCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myLightningCell.swift; sourceTree = "<group>"; };
 		A9ADBC532012FE940093C5D7 /* CloudyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyCollectionViewController.swift; sourceTree = "<group>"; };
 		A9ADBC552012FEE20093C5D7 /* myCloudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCloudyCell.swift; sourceTree = "<group>"; };
 		A9F0A6E41FC9D0CB006BE7A1 /* UIImagePIckerViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIImagePIckerViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +57,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9A725BE201EA9B700326622 /* WeatherCells */ = {
+			isa = PBXGroup;
+			children = (
+				A99EC0341FCA736100108221 /* myCell.swift */,
+				A9ADBC552012FEE20093C5D7 /* myCloudyCell.swift */,
+				A900AEB1201597C300C6BC11 /* myColdCell.swift */,
+				A9A725B8201EA90E00326622 /* myRainCell.swift */,
+				A9A725BA201EA94000326622 /* myLightningCell.swift */,
+			);
+			path = WeatherCells;
+			sourceTree = "<group>";
+		};
+		A9A725BF201EA9C500326622 /* WeatherVCs */ = {
+			isa = PBXGroup;
+			children = (
+				A99EC0321FCA6B9900108221 /* CollectionViewController.swift */,
+				A9ADBC532012FE940093C5D7 /* CloudyCollectionViewController.swift */,
+				A900AEAF201597AA00C6BC11 /* ColdCollectionViewController.swift */,
+				A9A725B4201EA7E600326622 /* RainCollectionViewController.swift */,
+				A9A725B6201EA81B00326622 /* LightningCollectionViewController.swift */,
+			);
+			path = WeatherVCs;
+			sourceTree = "<group>";
+		};
 		A9F0A6DB1FC9D0CB006BE7A1 = {
 			isa = PBXGroup;
 			children = (
@@ -70,13 +102,9 @@
 			children = (
 				A9F0A6E71FC9D0CB006BE7A1 /* AppDelegate.swift */,
 				A9F0A6E91FC9D0CB006BE7A1 /* ViewController.swift */,
-				A99EC0321FCA6B9900108221 /* CollectionViewController.swift */,
-				A9ADBC532012FE940093C5D7 /* CloudyCollectionViewController.swift */,
-				A900AEAF201597AA00C6BC11 /* ColdCollectionViewController.swift */,
 				A9F0A6F91FC9E72C006BE7A1 /* myPhotoFileFolder.swift */,
-				A99EC0341FCA736100108221 /* myCell.swift */,
-				A9ADBC552012FEE20093C5D7 /* myCloudyCell.swift */,
-				A900AEB1201597C300C6BC11 /* myColdCell.swift */,
+				A9A725BF201EA9C500326622 /* WeatherVCs */,
+				A9A725BE201EA9B700326622 /* WeatherCells */,
 				A9F0A6EB1FC9D0CB006BE7A1 /* Main.storyboard */,
 				A9F0A6EE1FC9D0CB006BE7A1 /* Assets.xcassets */,
 				A9F0A6F01FC9D0CB006BE7A1 /* LaunchScreen.storyboard */,
@@ -157,11 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A725B5201EA7E600326622 /* RainCollectionViewController.swift in Sources */,
 				A9ADBC542012FE940093C5D7 /* CloudyCollectionViewController.swift in Sources */,
 				A900AEB2201597C300C6BC11 /* myColdCell.swift in Sources */,
+				A9A725BB201EA94000326622 /* myLightningCell.swift in Sources */,
+				A9A725B9201EA90E00326622 /* myRainCell.swift in Sources */,
 				A99EC0331FCA6B9A00108221 /* CollectionViewController.swift in Sources */,
 				A900AEB0201597AA00C6BC11 /* ColdCollectionViewController.swift in Sources */,
 				A9ADBC562012FEE20093C5D7 /* myCloudyCell.swift in Sources */,
+				A9A725B7201EA81B00326622 /* LightningCollectionViewController.swift in Sources */,
 				A9F0A6FA1FC9E72C006BE7A1 /* myPhotoFileFolder.swift in Sources */,
 				A99EC0351FCA736200108221 /* myCell.swift in Sources */,
 				A9F0A6EA1FC9D0CB006BE7A1 /* ViewController.swift in Sources */,

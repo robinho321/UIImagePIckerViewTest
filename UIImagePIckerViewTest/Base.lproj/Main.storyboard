@@ -86,6 +86,8 @@
                         <segue destination="A52-Cx-Sbf" kind="show" identifier="showNice" id="tLi-j8-H3d"/>
                         <segue destination="zqt-eZ-sgh" kind="show" identifier="showCloudy" id="4Ao-MQ-lPb"/>
                         <segue destination="wWU-mS-DMf" kind="show" identifier="showCold" id="nLf-0c-7eE"/>
+                        <segue destination="Ipr-af-hbz" kind="show" identifier="showRain" id="nZm-y5-Xnw"/>
+                        <segue destination="q3P-yp-Bde" kind="show" identifier="showLightning" id="MFd-HD-GtB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYl-Ed-4MI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,7 +443,229 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2Z-gc-YnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2325.5999999999999" y="897.30134932533736"/>
+            <point key="canvasLocation" x="3926" y="-97"/>
+        </scene>
+        <!--Rain Collection View Controller-->
+        <scene sceneID="X4k-Wj-r0I">
+            <objects>
+                <viewController id="Ipr-af-hbz" customClass="RainCollectionViewController" customModule="UIImagePIckerViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nmt-bj-cWJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cP4-jj-41F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Muf-Ln-uXX">
+                                    <size key="itemSize" width="118" height="118"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="LWe-Ih-Abr" customClass="myRainCell" customModule="UIImagePIckerViewTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="heH-Cx-C2x">
+                                                    <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
+                                                </imageView>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckh-kc-SKq">
+                                                    <rect key="frame" x="8" y="8" width="18" height="18"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aLb-Xp-vFL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUS-Kw-Tcr">
+                                                                <rect key="frame" x="2" y="2" width="14" height="14"/>
+                                                                <state key="normal" image="close_black_2048x2048"/>
+                                                                <connections>
+                                                                    <action selector="deleteButtonDidTap:" destination="LWe-Ih-Abr" eventType="touchUpInside" id="x4R-k7-7Uq"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="yUS-Kw-Tcr" firstAttribute="leading" secondItem="aLb-Xp-vFL" secondAttribute="leading" constant="2" id="3Vs-Nt-vt3"/>
+                                                            <constraint firstItem="yUS-Kw-Tcr" firstAttribute="top" secondItem="aLb-Xp-vFL" secondAttribute="top" constant="2" id="DOs-GM-yST"/>
+                                                            <constraint firstAttribute="trailing" secondItem="yUS-Kw-Tcr" secondAttribute="trailing" constant="2" id="dDP-DV-SyO"/>
+                                                            <constraint firstAttribute="bottom" secondItem="yUS-Kw-Tcr" secondAttribute="bottom" constant="2" id="lxP-nT-3Dx"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="18" id="SD8-Rd-Wis"/>
+                                                        <constraint firstAttribute="height" constant="18" id="agn-Al-imC"/>
+                                                    </constraints>
+                                                    <blurEffect style="extraLight"/>
+                                                </visualEffectView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="heH-Cx-C2x" secondAttribute="bottom" id="3LU-kT-2H6"/>
+                                            <constraint firstItem="heH-Cx-C2x" firstAttribute="top" secondItem="LWe-Ih-Abr" secondAttribute="top" id="77T-Mx-xUv"/>
+                                            <constraint firstItem="ckh-kc-SKq" firstAttribute="leading" secondItem="LWe-Ih-Abr" secondAttribute="leading" constant="8" id="Btc-De-jtj"/>
+                                            <constraint firstItem="ckh-kc-SKq" firstAttribute="top" secondItem="LWe-Ih-Abr" secondAttribute="top" constant="8" id="cZQ-my-bPd"/>
+                                            <constraint firstAttribute="trailing" secondItem="heH-Cx-C2x" secondAttribute="trailing" id="efu-vb-VXA"/>
+                                            <constraint firstItem="heH-Cx-C2x" firstAttribute="leading" secondItem="LWe-Ih-Abr" secondAttribute="leading" id="eza-xA-qLG"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="deleteButtonBackgroundView" destination="ckh-kc-SKq" id="oeF-pz-dZW"/>
+                                            <outlet property="myRainImageView" destination="heH-Cx-C2x" id="rOt-gS-rBc"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ipr-af-hbz" id="8Mw-HY-f1I"/>
+                                    <outlet property="delegate" destination="Ipr-af-hbz" id="gJW-lE-fVx"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbb-vW-QaV">
+                                <rect key="frame" x="128" y="598" width="118" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="LEq-sH-SX5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Image">
+                                    <color key="titleColor" red="0.057249147049999997" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addMyImage:" destination="Ipr-af-hbz" eventType="touchUpInside" id="rld-fs-t6m"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cP4-jj-41F" firstAttribute="leading" secondItem="dm8-6c-p54" secondAttribute="leading" id="N1l-hj-d6L"/>
+                            <constraint firstItem="cP4-jj-41F" firstAttribute="bottom" secondItem="dm8-6c-p54" secondAttribute="bottom" id="U2Y-KO-EyE"/>
+                            <constraint firstItem="Hbb-vW-QaV" firstAttribute="leading" secondItem="dm8-6c-p54" secondAttribute="leading" constant="128" id="dBk-aR-edP"/>
+                            <constraint firstItem="dm8-6c-p54" firstAttribute="trailing" secondItem="Hbb-vW-QaV" secondAttribute="trailing" constant="129" id="eOk-Ek-Miu"/>
+                            <constraint firstItem="cP4-jj-41F" firstAttribute="trailing" secondItem="dm8-6c-p54" secondAttribute="trailing" id="m3V-sU-GtE"/>
+                            <constraint firstItem="cP4-jj-41F" firstAttribute="top" secondItem="Nmt-bj-cWJ" secondAttribute="top" id="mQc-SY-w5H"/>
+                            <constraint firstItem="dm8-6c-p54" firstAttribute="bottom" secondItem="Hbb-vW-QaV" secondAttribute="bottom" constant="26" id="zTD-hL-Lta"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dm8-6c-p54"/>
+                    </view>
+                    <connections>
+                        <outlet property="addMyImageButton" destination="Hbb-vW-QaV" id="zYi-jW-k11"/>
+                        <outlet property="collectionView" destination="cP4-jj-41F" id="mKh-Kj-Exj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BtI-iC-Mna" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2326" y="994"/>
+        </scene>
+        <!--Lightning Collection View Controller-->
+        <scene sceneID="uho-MC-myU">
+            <objects>
+                <viewController id="q3P-yp-Bde" customClass="LightningCollectionViewController" customModule="UIImagePIckerViewTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0xw-dV-fU8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3un-1f-eCJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o5v-W5-Luq">
+                                    <size key="itemSize" width="118" height="118"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="8Pi-zf-BrC" customClass="myLightningCell" customModule="UIImagePIckerViewTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L44-Qe-gaK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
+                                                </imageView>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="neU-XU-zUq">
+                                                    <rect key="frame" x="8" y="8" width="18" height="18"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jaz-UT-DVj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3B-zP-Ez1">
+                                                                <rect key="frame" x="2" y="2" width="14" height="14"/>
+                                                                <state key="normal" image="close_black_2048x2048"/>
+                                                                <connections>
+                                                                    <action selector="deleteButtonDidTap:" destination="8Pi-zf-BrC" eventType="touchUpInside" id="NC0-8r-1IE"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="L3B-zP-Ez1" secondAttribute="trailing" constant="2" id="2DN-DJ-Zpd"/>
+                                                            <constraint firstItem="L3B-zP-Ez1" firstAttribute="leading" secondItem="jaz-UT-DVj" secondAttribute="leading" constant="2" id="TtN-pu-5o2"/>
+                                                            <constraint firstAttribute="bottom" secondItem="L3B-zP-Ez1" secondAttribute="bottom" constant="2" id="ZnK-lV-V6H"/>
+                                                            <constraint firstItem="L3B-zP-Ez1" firstAttribute="top" secondItem="jaz-UT-DVj" secondAttribute="top" constant="2" id="b9H-IY-qbC"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="19i-47-tQP"/>
+                                                        <constraint firstAttribute="width" constant="18" id="AtM-1m-boQ"/>
+                                                    </constraints>
+                                                    <blurEffect style="extraLight"/>
+                                                </visualEffectView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="L44-Qe-gaK" firstAttribute="top" secondItem="8Pi-zf-BrC" secondAttribute="top" id="41j-AK-wbb"/>
+                                            <constraint firstItem="L44-Qe-gaK" firstAttribute="leading" secondItem="8Pi-zf-BrC" secondAttribute="leading" id="6RX-pI-QkR"/>
+                                            <constraint firstItem="neU-XU-zUq" firstAttribute="top" secondItem="8Pi-zf-BrC" secondAttribute="top" constant="8" id="CcK-QQ-WN5"/>
+                                            <constraint firstItem="neU-XU-zUq" firstAttribute="leading" secondItem="8Pi-zf-BrC" secondAttribute="leading" constant="8" id="JD8-f3-ynW"/>
+                                            <constraint firstAttribute="bottom" secondItem="L44-Qe-gaK" secondAttribute="bottom" id="V2k-zM-r1T"/>
+                                            <constraint firstAttribute="trailing" secondItem="L44-Qe-gaK" secondAttribute="trailing" id="hhT-OD-kzo"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="deleteButtonBackgroundView" destination="neU-XU-zUq" id="fyl-bB-q01"/>
+                                            <outlet property="myLightningImageView" destination="L44-Qe-gaK" id="SLC-qH-1KH"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="q3P-yp-Bde" id="IjH-Jr-Ibl"/>
+                                    <outlet property="delegate" destination="q3P-yp-Bde" id="B9H-Y8-ka3"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSs-IT-Ora">
+                                <rect key="frame" x="128" y="598" width="118" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="YeC-c6-p72"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Image">
+                                    <color key="titleColor" red="0.057249147049999997" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addMyImage:" destination="q3P-yp-Bde" eventType="touchUpInside" id="IuT-jn-qub"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sSs-IT-Ora" firstAttribute="leading" secondItem="roc-2S-hFg" secondAttribute="leading" constant="128" id="EAK-GC-pdI"/>
+                            <constraint firstItem="3un-1f-eCJ" firstAttribute="bottom" secondItem="roc-2S-hFg" secondAttribute="bottom" id="J5g-NA-js9"/>
+                            <constraint firstItem="3un-1f-eCJ" firstAttribute="trailing" secondItem="roc-2S-hFg" secondAttribute="trailing" id="JAN-iQ-nh9"/>
+                            <constraint firstItem="3un-1f-eCJ" firstAttribute="leading" secondItem="roc-2S-hFg" secondAttribute="leading" id="W1p-t1-jFu"/>
+                            <constraint firstItem="roc-2S-hFg" firstAttribute="trailing" secondItem="sSs-IT-Ora" secondAttribute="trailing" constant="129" id="XwI-ha-KLW"/>
+                            <constraint firstItem="roc-2S-hFg" firstAttribute="bottom" secondItem="sSs-IT-Ora" secondAttribute="bottom" constant="26" id="g8i-Hy-hBF"/>
+                            <constraint firstItem="3un-1f-eCJ" firstAttribute="top" secondItem="0xw-dV-fU8" secondAttribute="top" id="q9K-Kx-ASF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="roc-2S-hFg"/>
+                    </view>
+                    <connections>
+                        <outlet property="addMyImageButton" destination="sSs-IT-Ora" id="lMJ-la-RY9"/>
+                        <outlet property="collectionView" destination="3un-1f-eCJ" id="wAK-FX-RHm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCi-3y-WTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3121" y="1309"/>
         </scene>
     </scenes>
     <resources>

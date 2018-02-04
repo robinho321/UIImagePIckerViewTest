@@ -6,7 +6,6 @@
 //  Copyright © 2017 Robin Allemand. All rights reserved.
 //
 
-
 import UIKit
 import Photos
 
